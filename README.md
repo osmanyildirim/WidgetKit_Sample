@@ -1,4 +1,4 @@
-# readmesample
+# WidgetKit_Sample
 A sample project of different [WidgetKit](https://developer.apple.com/documentation/widgetkit) types.
 
 ## Installation
