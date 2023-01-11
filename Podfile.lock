@@ -1,0 +1,33 @@
+PODS:
+  - Drops (1.6.0)
+  - IQKeyboardManagerSwift (6.5.10)
+  - SnapKit (5.6.0)
+
+DEPENDENCIES:
+  - Drops (from `https://github.com/omaralbeik/Drops.git`, tag `1.6.0`)
+  - IQKeyboardManagerSwift
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - SnapKit
+
+EXTERNAL SOURCES:
+  Drops:
+    :git: https://github.com/omaralbeik/Drops.git
+    :tag: 1.6.0
+
+CHECKOUT OPTIONS:
+  Drops:
+    :git: https://github.com/omaralbeik/Drops.git
+    :tag: 1.6.0
+
+SPEC CHECKSUMS:
+  Drops: da5dc4a3805debc408b7db9d0ba3b9cc147c8d1e
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+
+PODFILE CHECKSUM: 1fe5c5bf2070e552d9adb556a2bccbc35e165cb4
+
+COCOAPODS: 1.11.3

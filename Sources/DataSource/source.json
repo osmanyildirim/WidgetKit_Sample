@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Bulbasaur",
+        "type": "Grass",
+        "ability": "Overgrow",
+        "species": "Seed",
+        "color": "#386d26"
+    },
+    {
+        "name": "Charmander",
+        "type": "Fire",
+        "ability": "Blaze",
+        "species": "Lizard",
+        "color": "#f08129"
+    },
+    {
+        "name": "Pikachu",
+        "type": "Electric",
+        "ability": "Static",
+        "species": "Mouse",
+        "color": "#ffd926"
+    },
+    {
+        "name": "Squirtle",
+        "type": "Water",
+        "ability": "Torrent",
+        "species": "Tiny Turtle",
+        "color": "#42777d"
+    }
+]

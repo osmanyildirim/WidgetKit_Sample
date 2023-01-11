@@ -1,0 +1,65 @@
+name: WidgetKit_Sample
+
+options:
+  bundleIdPrefix: com.osmanyildirim
+  xcodeVersion: 14.1
+
+settings:
+  base:
+    CODE_SIGN_STYLE: Manual
+    SWIFT_VERSION: 5.0
+
+targets:
+  WidgetKit_Sample:
+    type: application
+    sources: [Sources, Shared, IntentHandler/SelectPokemon.intentdefinition]
+    platform: iOS
+    deploymentTarget: 16.0
+    dependencies:
+      - target: WidgetsExtension
+      - target: IntentExtension
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: 1
+        PRODUCT_BUNDLE_IDENTIFIER: com.osmanyildirim.WidgetKit-Sample
+        INFOPLIST_FILE: Sources/Supporting/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Sources/Supporting/WidgetKit_Sample.entitlements
+    postbuildScripts:
+      - path: Scripts/Swiftlint.sh
+        name: Swiftlint
+  WidgetsExtension:
+    type: app-extension
+    sources:
+      [
+        Widgets,
+        Shared,
+        Sources/Assets/Assets.xcassets,
+        IntentHandler/SelectPokemon.intentdefinition,
+      ]
+    platform: iOS
+    deploymentTarget: 16.0
+    dependencies:
+      - sdk: SwiftUI.framework
+      - sdk: WidgetKit.framework
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: 1
+        PRODUCT_BUNDLE_IDENTIFIER: com.osmanyildirim.WidgetKit-Sample.Widgets
+        INFOPLIST_FILE: Widgets/Supporting/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Widgets/Supporting/WidgetsExtension.entitlements
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    postbuildScripts:
+      - path: Scripts/Swiftlint.sh
+        name: Swiftlint
+  IntentExtension:
+    type: app-extension
+    sources: [IntentHandler, Shared]
+    platform: iOS
+    deploymentTarget: 16.0
+    dependencies:
+      - sdk: Intents.framework
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.osmanyildirim.WidgetKit-Sample.IntentExtension
+        INFOPLIST_FILE: IntentHandler/Supporting/Info.plist
+        CODE_SIGN_ENTITLEMENTS: IntentHandler/Supporting/IntentExtension.entitlements

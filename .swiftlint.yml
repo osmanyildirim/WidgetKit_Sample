@@ -1,0 +1,10 @@
+disabled_rules:
+  - line_length
+  - type_name
+  - trailing_whitespace
+  - identifier_name
+  - cyclomatic_complexity
+  - function_body_length
+
+excluded:
+  - Pods

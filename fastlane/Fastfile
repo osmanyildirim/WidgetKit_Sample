@@ -1,0 +1,47 @@
+fastlane_require 'dotenv'
+default_platform(:ios)
+
+platform :ios do
+
+  desc 'Clean any generated Xcode project and pods'
+  lane :clean do
+    Dir.chdir('../') do
+      sh('rm -rf *.xcodeproj')
+      sh('rm -rf *.xcworkspace')
+      sh('rm -rf *.ipa')
+      sh('rm -rf Pods')
+    end
+  end
+
+  desc 'Generate Xcode project and install dependencies'
+  lane :generate do
+    generate()
+  end  
+
+  def generate
+    clean
+    Dotenv.overload '../.env'
+    update_info_plist
+
+    Dir.chdir('../') do
+      xcodegen_config = ENV['XCODEGEN_CONFIG_FILE']
+      if xcodegen_config.nil?
+        sh('xcodegen -q')
+      else
+        sh("xcodegen -q -s #{xcodegen_config}")
+      end
+    end
+
+    cocoapods(
+      try_repo_update_on_error: true
+    )
+  end
+
+  def update_info_plist
+    path = ENV['INFO_PLIST']
+    set_info_plist_value(path: path, key: 'CFBundleName', value: ENV['APP_NAME'])
+    set_info_plist_value(path: path, key: "CFBundleShortVersionString", value: ENV['BUNDLE_VERSION_STRING'])
+    set_info_plist_value(path: path, key: "CFBundleVersion", value: ENV['BUNDLE_VERSION'])
+  end
+
+end
